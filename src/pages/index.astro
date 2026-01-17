@@ -1,16 +1,49 @@
 ---
-
+const links = [
+  { title: "Haugan Games", desc: "Små, dumme prosjekter.", href: "https://haugan.games" },
+  { title: "n8n", desc: "Automasjon hjemme.", href: "http://<din-n8n-url>" },
+  { title: "GitHub", desc: "Kode og repoer.", href: "https://github.com/" },
+];
 ---
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>haugan.dev</title>
+    <style>
+      :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+      body { margin: 0; background: #0b0c10; color: #e8e8ea; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 48px 20px; }
+      h1 { margin: 0 0 8px; font-size: 40px; }
+      p { margin: 0 0 24px; opacity: .85; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+      a.card { display:block; padding:16px; border-radius: 16px; background: #141622; border: 1px solid #24273a; color: inherit; text-decoration:none; }
+      a.card:hover { transform: translateY(-1px); border-color:#3a3f60; }
+      .tag { display:inline-block; margin-top:10px; font-size:12px; opacity:.75; }
+      .now { margin-top: 22px; padding: 16px; border-radius: 16px; background:#10111a; border:1px solid #24273a; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Vetle’s Control Center</h1>
+      <p>Deploy først. Tenke etterpå.</p>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+      <div class="grid">
+        {links.map(l => (
+          <a class="card" href={l.href}>
+            <strong>{l.title}</strong><br />
+            <span style="opacity:.85">{l.desc}</span>
+            <div class="tag">Åpne →</div>
+          </a>
+        ))}
+      </div>
+
+      <div class="now">
+        <strong>Now</strong>
+        <div style="opacity:.85; margin-top:8px">
+          Bygger haugan.dev v0. Neste: koble domene + legge inn status.
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
